@@ -1,1 +1,311 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/*  
+  ------------------
+  CSS RESET
+  ------------------
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+/*  
+  ------------------
+  ROOT VARIABLES
+  ------------------
+*/
+:root {
+  --primary-color: rgb(58, 56, 56);
+  --secondary-color: rgb(255, 255, 255);
+  --ternary-color: rgb(240, 232, 232);
+}
+/*  
+  ------------------
+  Utility 
+  ------------------
+*/
+.container {
+  width: 95%;
+  margin: 0 auto;
+  /* outline: 1px solid red; */
+}
+/*  
+  ------------------
+  Header 
+  ------------------
+*/
+header {
+  background-color: var(--primary-color);
+  padding: 10px;
+}
+header > a {
+  text-decoration: none;
+}
+.nav-heading {
+  font-weight: bolder;
+  color: var(--secondary-color);
+  display: inline;
+}
+/*  
+  ------------------
+  Search Bar 
+  ------------------
+*/
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+}
+.searchInput {
+  width: 25%;
+  padding-left: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#searchBtn {
+  width: 100px;
+  padding: 6px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+/*  
+  ------------------
+  Sorting Section
+  ------------------
+*/
+.sorting-option {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+}
+.sorting-option button {
+  padding: 2px 5px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+/*  
+  ------------------
+  Tabs Section 
+  ------------------
+*/
+.tabs {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+}
+.tabs button {
+  width: 100px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 2px 5px;
+  font-weight: 600;
+}
+.active {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.divider {
+  height: 3px;
+  background-color: #000;
+}
+/*  
+  ------------------
+  Movie Display Section
+  ------------------
+*/
+#moviedisplay {
+  padding: 5px 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  flex: 1;
+  justify-content: center;
+}
+.movie-card {
+  width: 200px;
+  border: 1px solid var(--primary-color);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.movie-image {
+  width: 100%;
+  height: 100%;
+}
+.movie-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0, 45%);
+  backdrop-filter: blur(5px);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.5s ease;
+  border-radius: 10px;
+}
+.movie-card:hover .movie-info-overlay {
+  height: 85%;
+}
+.movie-title {
+  padding: 5px 10px;
+  color: var(--secondary-color);
+}
+.movie-vote-count {
+  padding: 0 10px;
+  color: var(--secondary-color);
+}
+.movie-vote-average {
+  padding: 0 10px;
+  color: var(--secondary-color);
+}
+.movie-overview {
+  color: var(--secondary-color);
+  padding: 0 10px;
+}
+.overview {
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+}
+.fa-heart-o {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  background-color: rgb(0, 0, 0, 45%);
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.fa-heart {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+}
+#preloaded {
+  width: 90%;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+/*  
+  ------------------
+  Pagination
+  ------------------
+*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px;
+}
+.pagination button {
+  padding: 5px;
+  background-color: var(--ternary-color);
+  color: var(--primary-color);
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.disabled {
+  opacity: 0.5;
+}
+/*  
+  ------------------
+  Footer
+  ------------------
+*/
+footer {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  text-align: center;
+  padding: 5px 0;
+}
+/*  
+  ------------------
+  Media Queries
+  ------------------
+*/
+@media screen and (max-width: 37.5rem) {
+  /* 600px */
+  /*  
+  ------------------
+  Search Bar 
+  ------------------
+*/
+  .searchInput {
+    width: 35%;
+  }
+}
 
+@media screen and (max-width: 34.375rem) {
+  /* 550px */
+  /*  
+  ------------------
+  Sorting Section
+  ------------------
+*/
+  .sorting-option {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sorting-option button {
+    width: 55%;
+  }
+}
+
+@media screen and (max-width: 28.125rem) {
+  /* 450px */
+  /*  
+  ------------------
+  Search Bar 
+  ------------------
+*/
+  .search-bar {
+    padding: 5px 0;
+  }
+  .searchInput {
+    flex: 1;
+  }
+  /*  
+  ------------------
+  Sorting Section 
+  ------------------
+*/
+  .sorting-option {
+    padding: 5px 0;
+  }
+  .sorting-option button {
+    width: 90%;
+  }
+  /*  
+  ------------------
+  Tabs Section
+  ------------------
+*/
+  .tabs {
+    justify-content: center;
+    padding: 5px 0;
+  }
+  /*  
+  ------------------
+  Movie Display Section
+  ------------------
+*/
+  .movie-card {
+    width: 150px;
+  }
+}
