@@ -1,1 +1,130 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Deck - HTML & CSS</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./App.js" defer></script>
+</head>
+<body>
+    <header><a href="#"><h1 class="nav-heading">Movie Deck</h1></a></header>
+    <section class="search-bar container">
+        <input class="searchInput" type="text" placeholder="Search by name..." autocomplete="off">
+        <button id="searchBtn">Search</button>
+    </section>
+    <section class="sorting-option container">
+        <button id="sortbydate">Sort by date (oldest to latest)</button>
+        <button id="sortbyrating">Sort by rating (least to most)</button>
+    </section>
+    <section class="tabs container">
+        <button id="all-movies" class="active">All</button>
+        <button id="fav-movies">Favourite</button>
+    </section>
+    <hr class="container divider">
+    <div id="moviedisplay" class="container">
+    </div>
+    <div id="preloaded" class="container">
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+        <div class="movie-card">
+            <img class="movie-image" src="https://image.tmdb.org/t/p/original//3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="">
+            <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
+            <div class="movie-info-overlay">
+                <h3 class="movie-title">Movie-title</h3>
+                <div class="movie-vote-count">Votes: vote-count</div>
+                <div class="movie-vote-average">Rating: vote-average</div>
+            </div>
+        </div>
+    </div>
+    <hr class="container divider">
+    <section class="pagination container">
+        <button class="prev" id="prevBtn">Previous</button>
+        <button class="curr" id="currBtn"></button>
+        <button class="next" id="nextBtn">Next</button>
+    </section>
+    <footer>
+        <p>&copy;2023 Movie Deck</p>
+    </footer>
+</body>
+</html>
