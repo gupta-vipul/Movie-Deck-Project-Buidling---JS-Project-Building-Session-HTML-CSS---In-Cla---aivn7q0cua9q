@@ -5,11 +5,18 @@ const sortByRatingBtn = document.getElementById("sortbyrating");
 const prevBtn = document.getElementById("prevBtn");
 const currBtn = document.getElementById("currBtn");
 const nextBtn = document.getElementById("nextBtn");
+const searchInput = document.getElementsByTagName("input");
+const searchBtn = document.getElementById("searchBtn");
+const favoriteMovieTab = document.getElementById("fav-movies");
+const allMovieTab = document.getElementById("all-movies");
 let allMovieData = [];
 let page = 1;
 prevBtn.disabled = true;
 prevBtn.classList.add("disabled");
 currBtn.innerHTML = `current Page: ${page}`;
+let favoriteMovieStorage = [];
+// console.log(searchInput[0]);
+
 
 // Task 1 : Display a list of Movies through an external API
 async function fetchMovies(page) {
@@ -25,10 +32,13 @@ function displayMovies(allMoviesData) {
     // console.log(allMoviesData);
     preloadedHtml.style.display = "none";
     allMoviesData.map(({poster_path, title, vote_average, vote_count, overview, release_date})=>{
-    const cardTemplate = 
-    `
-    <div class="movie-card">
-            <img class="movie-image" src="https://image.tmdb.org/t/p/original/${poster_path}" alt="${title}">
+        let poster_image = `https://image.tmdb.org/t/p/original/${poster_path}`;
+        if(poster_path == null) {
+            poster_image = 'https://media.istockphoto.com/id/1271522601/photo/pop-corn-and-on-red-armchair-cinema.jpg?s=612x612&w=0&k=20&c=XwQxmfrHb-OwV5onPUW5ApB4RaGBK7poSIzZj4q_N_g=';
+        }
+        const cardTemplate = 
+        `<div class="movie-card">
+            <img class="movie-image" src="${poster_image}" alt="${title}">
             <i class="fa fa-heart-o" style="font-size:24px;color:var(--secondary-color)"></i>
             <div class="movie-info-overlay">
                 <h3 class="movie-title">${title} <span class="releaseyear">(${release_date.split("-")[0]})</span></h3>
@@ -39,8 +49,7 @@ function displayMovies(allMoviesData) {
                     <div class="overview">${overview}</div>
                 </div>
             </div>
-        </div>
-    `;
+        </div>`;
         // console.log(poster_path, title, vote_average, vote_count);
         allMoviesDisplay.innerHTML += cardTemplate;
     });
@@ -87,10 +96,46 @@ function handleSortByRatingBtn() {
 }
 
 // Task 3: Adding Search Functionality
+searchBtn.addEventListener('click', handleSearchBtnClick);
+async function handleSearchBtnClick() {
+    // let searchMovie = searchInput[0].value.toLowerCase();
+    let searchMovie = searchInput[0].value;
+    if(searchMovie.length == 0) {
+        // console.log('In');
+        alert('Please enter a movie name to search!')
+    }
+    else {
+        allMoviesDisplay.innerHTML = "";
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${searchMovie}&api_key=f531333d637d0c44abc85b3e74db2186&language=en-US`);
+        const data = await res.json();
+        
+        if(data.results.length == 0) {
+            allMoviesDisplay.innerHTML = `<img src="./images/no-data-found.png" alt="no data found" />`;
+            return;
+        }
+        displayMovies(data.results);
+        searchInput[0].value = "";
+        // console.log(data.results);
+    }
+}
 
 // Task 4: Add and Remove Movies from Favorite
 
 // Task 5: Implement the Favorites tab
+favoriteMovieTab.addEventListener('click', handleFavoriteMovieTabBtn);
+function handleFavoriteMovieTabBtn() {
+    allMoviesDisplay.innerHTML = "";
+    if(favoriteMovieStorage == 0) {
+        currBtn.innerHTML = `current Page: 1`;
+    }
+
+}
+allMovieTab.addEventListener('click', handleAllMovieTabBtn);
+function handleAllMovieTabBtn() {
+    allMoviesDisplay.innerHTML = "";
+    fetchMovies(page);
+    currBtn.innerHTML = `current Page: ${page}`;
+}
 
 // Task 6: Pagination
 prevBtn.addEventListener('click', handlePrevBtnClick);
