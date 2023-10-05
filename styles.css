@@ -37,6 +37,7 @@
 */
 body {
   position: relative;
+  background-color: #f4f4f4;
 }
 header {
   background-color: rgba(0,0,0,0.7);
@@ -69,8 +70,8 @@ header > a {
 }
 .searchInput {
   width: 25%;
-  padding-left: 5px;
-  border-radius: 5px;
+  padding-left: 10px;
+  border-radius: 20px;
   border: 1px solid black;
 }
 #searchBtn {
@@ -79,7 +80,7 @@ header > a {
   background-color: var(--primary-color);
   color: var(--secondary-color);
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: 600;
 }
@@ -95,9 +96,11 @@ header > a {
   padding: 5px;
 }
 .sorting-option button {
-  padding: 2px 5px;
-  border-radius: 5px;
-  border: 0;
+  background-color: var(--secondary-color);
+  box-sizing: border-box;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid black;
   font-size: 0.9rem;
   cursor: pointer;
   font-weight: 600;
@@ -114,11 +117,12 @@ header > a {
 }
 .tabs button {
   width: 100px;
-  border: none;
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   cursor: pointer;
   padding: 2px 5px;
   font-weight: 600;
+  box-sizing: border-box;
 }
 .active {
   background-color: var(--primary-color);
@@ -213,6 +217,10 @@ header > a {
   flex-wrap: wrap;
   justify-content: center;
 }
+.temp {
+  width: 50%;
+  /* height: 100%; */
+}
 /*  
   ------------------
   Pagination
@@ -229,7 +237,8 @@ header > a {
   background-color: var(--ternary-color);
   color: var(--primary-color);
   font-weight: 600;
-  border: none;
+  border: 1px solid var(--primary-color);
+  box-sizing: border-box;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -253,9 +262,20 @@ footer {
   Media Queries
   ------------------
 */
+@media screen and (max-width: 63.75rem) {
+  /* 1020px */
+/*  
+  ------------------
+  data-not-found-img 
+  ------------------
+*/
+  .temp {
+    width: 60%;
+  }
+}
 @media screen and (max-width: 37.5rem) {
   /* 600px */
-  /*  
+/*  
   ------------------
   Search Bar 
   ------------------
@@ -263,6 +283,14 @@ footer {
   .searchInput {
     width: 35%;
   }
+/*  
+  ------------------
+  data-not-found-img 
+  ------------------
+*/
+.temp {
+  width: 70%;
+}
 }
 
 @media screen and (max-width: 34.375rem) {
@@ -278,6 +306,14 @@ footer {
   }
   .sorting-option button {
     width: 55%;
+  }
+/*  
+  ------------------
+  data-not-found-img 
+  ------------------
+*/
+  .temp {
+    width: 80%;
   }
 }
 
@@ -322,4 +358,13 @@ footer {
   .movie-card {
     width: 150px;
   }
+/*  
+  ------------------
+  data-not-found-img 
+  ------------------
+*/
+  .temp {
+    width: 100%;
+  }
 }
+
