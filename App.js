@@ -29,7 +29,7 @@ async function fetchMovies(page) {
 fetchMovies(page);
 
 function displayMovies(allMoviesData) {
-    console.log(allMoviesData);
+    // console.log(allMoviesData);
     preloadedHtml.style.display = "none";
     allMoviesData.map(({id, poster_path, title, vote_average, vote_count, overview, release_date})=>{
         let poster_image = `https://image.tmdb.org/t/p/original/${poster_path}`;
@@ -41,7 +41,7 @@ function displayMovies(allMoviesData) {
             <img class="movie-image" src="${poster_image}" alt="${title}">
             <i class="fa fa-heart-o" id="${id}" style="font-size:24px;color:var(--secondary-color)"></i>
             <div class="movie-info-overlay" >
-                <h3 class="movie-title">${title}</h3>
+                <h3 class="movie-title">${title} <span class="releaseyear">(${release_date.split("-")[0]})</span></h3>
                 <div class="movie-vote-average">Rating: <span class="rating">${vote_average}</span></div>
                 <div class="movie-vote-count">Votes: <span class="vote">${vote_count}</span></div>
                 <div class="movie-overview">
@@ -54,9 +54,6 @@ function displayMovies(allMoviesData) {
         allMoviesDisplay.innerHTML += cardTemplate;
     });
 }
-// <span class="releaseyear">(${release_date.split("-")[0]})</span>
-
-
 
 // Task 2 : Sorting movies by their rating and by their release date
 sortByDateBtn.addEventListener('click', handleSortByDateBtn);
@@ -154,11 +151,11 @@ function addToLocalStorage(movieCard) {
     let favMovie = {
         id: movieCard.querySelector('i').id,
         title: movieCard.querySelector('.movie-title').textContent,
-        poster_path: movieCard.querySelector('img').src.slice(36),
+        image: movieCard.querySelector('img').src,
         vote_count: movieCard.querySelector('.vote').textContent,
         vote_average: movieCard.querySelector('.rating').textContent,
-        overview: movieCard.querySelector('.overview').textContent
-        // release_date: movieCard.querySelector('releaseyear').textContent
+        overview: movieCard.querySelector('.overview').textContent,
+        // release_year: movieCard.querySelector('.releaseyear').textContent
     };
     let favoriteMovie = getFavoriteMoviesFromLS();
     favoriteMovie.push(favMovie);
@@ -181,13 +178,32 @@ function handleFavoriteMovieTabBtn() {
     allMoviesDisplay.innerHTML = "";
     favoriteMovieTab.classList.add('active');
     allMovieTab.classList.remove('active');
+    nextBtn.disabled = true;
+    nextBtn.classList.add('disabled');
     if(favoriteMoviesInLS.length === 0) {
         allMoviesDisplay.innerHTML = `<img class="temp" src="./images/no-data-found.png" alt="no data found" />`;
         currBtn.innerHTML = `current Page: 1`;
     }
     else {
-        // console.log(favoriteMoviesInLS);
-        displayMovies(favoriteMoviesInLS);
+        console.log(favoriteMoviesInLS);
+        // displayMovies(favoriteMoviesInLS);
+        favoriteMoviesInLS.map(({id, image, title, vote_count, vote_average, overview})=>{
+            // console.log(favMovie);
+            allMoviesDisplay.innerHTML += 
+            `<div class="movie-card">
+                <img class="movie-image" src="${image}" alt="${title}">
+                <i class="fa fa-heart" id="${id}" style="font-size:24px;color:var(--secondary-color)"></i>
+                <div class="movie-info-overlay" >
+                    <h3 class="movie-title">${title}</h3>
+                    <div class="movie-vote-average">Rating: <span class="rating">${vote_average}</span></div>
+                    <div class="movie-vote-count">Votes: <span class="vote">${vote_count}</span></div>
+                    <div class="movie-overview">
+                    <h4>Overview</h4>
+                    <div class="overview">${overview}</div>
+                    </div>
+                </div>
+            </div>`;
+        });
     }
 
 }
